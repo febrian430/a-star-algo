@@ -5,6 +5,9 @@ class PriorityQueue:
         self.head: Node = None
         self.tail: Node = None
 
+    def empty(self) -> bool:
+        return self.head is None
+    
     def put(self, path: Path):
         new_node = Node(path)
         if self.head is None:
@@ -33,6 +36,15 @@ class PriorityQueue:
             self.tail = None
         return top_node.path
        
+    def print_queue(self, idx_to_country):
+        curr = self.head
+        
+        print("=============== Current Queue ================")
+        while curr is not None:
+            print(curr.path.details(idx_to_country))
+            curr = curr.next
+            
+        print("=============================================")
     
 class Node:
     def __init__(self, path: Path):
